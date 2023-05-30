@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campeonato de Futbol</title>
+</head>
+<body>
+    <h1><center>CAMPEONATO DE FUTBOL</center></h1>
+    <a href="{%url 'registrar_equipo' %}" >Registrar Equipo</a>
+    <a href="{%url 'match' %}" >Generar match</a>
+
+    <br><br><br>
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col col-4">
+                <h2>Equipos registrados:</h2>
+                <ul>
+                    
+                    {% for equipo in equipos %}
+                        <li>{{equipo.nombre_equipo}}</li>
+                    {% endfor %}            
+                    
+                </ul>
+            </div>
+            <div class="col col-6">
+                <h2>Partidos</h2>
+                <ul>
+                    {% for partido in partidos %}
+                        
+                        {% if partido.partido.numero_de_partido == 1 %}
+                            <li>{{partido.equipo.nombre_equipo}}</li>
+                        {% endif %}
+
+                        {% if partido.partido.numero_de_partido == 2 %}
+                            <li>{{partido.equipo.nombre_equipo}}</li>
+                        {% endif %}
+
+                        {% if partido.partido.numero_de_partido == 3 %}
+                            <li>{{partido.equipo.nombre_equipo}}</li>
+                        {% endif %}
+
+                        {% if partido.partido.numero_de_partido == 4 %}
+                            <li>{{partido.equipo.nombre_equipo}}</li>
+                        {% endif %}
+
+
+                        
+                    {% endfor %}    
+                    
+                </ul>
+              </div>
+        </div>
+        <br>
+        <a href="{%url 'resultados' %}" >Generar Resultados</a>
+    </div>
+    
+</body>
+</html>
